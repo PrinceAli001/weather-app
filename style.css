@@ -1,0 +1,80 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+svg{
+    width: 60px;
+    height: 60px;
+    fill: #ff0000;
+}
+main{
+    height: 100vh;
+    padding: 100px 0 0 0;
+    background-image: url(Images/city.gif);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    text-align: center;
+}
+#weather-info{
+    width: 400px;
+    height: 400px;
+    /* background-color: rgba(0, 0, 0, 0.2); */
+    background-color: #ffffff;
+    margin: 0 auto 60px auto;
+    border-radius: 20px;
+}
+p{
+    outline: auto;
+    outline-color: #ff0000;
+}
+#location-container{
+    display: flex;
+}
+#search{
+    width: fit-content;
+    margin: 0 auto 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: repeat(2,1fr);
+}
+#location{
+    grid-area: 2/1/3/4;
+    height: 45px;
+    border-radius: 20px;
+    width: 400px;
+    border: 1px solid #c0c0c0;
+    padding-left: 15px;
+    font-size: 1rem;
+}
+#location:focus{
+    outline: auto;
+}
+#btn{
+    grid-area: 2/3/3/4;
+    background-color: #ffffff;
+    color: #0000ff;
+    border-radius: 0 20px 20px 0;
+    border: 1px solid #0000ff;
+    margin-left: 20px;
+}
+#btn:hover{
+    cursor: pointer;
+}
+#btn:active{
+    background-color: #0000ff;
+    color: #ffffff;
+}
+label{
+    margin: auto 0 auto 10px;
+    font-size: 1.5rem;
+    color: #ffffff;
+}
+#comment{
+    margin-top: 9%;
+    font-size: 0.8rem;
+    color: #ffffff;
+}
