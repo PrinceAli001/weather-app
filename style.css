@@ -4,6 +4,11 @@
     font-family: sans-serif;
     box-sizing: border-box;
 }
+img{
+    width: 120px;
+    height: 100px;
+    border-radius: 50%;
+}
 svg{
     width: 60px;
     height: 60px;
@@ -12,7 +17,7 @@ svg{
 main{
     height: 100vh;
     padding: 100px 0 0 0;
-    background-image: url(Images/city.gif);
+    background-image: url(Images/cloud-and-city.gif);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -51,17 +56,20 @@ main{
 }
 #tomorrow{
     display: inline-block;
-    font-size: 1.5rem;
-    margin-right: 7%;
+    font-size: 1.1rem;
+    margin-right: 2%;
 }
 #nxt-tomorrow{
     display: inline-block;
-    font-size: 1.5rem;
-    margin-left: 7%;
+    font-size: 1.1rem;
+    margin-left: 2%;
 }
 #overmorrow{
     margin-top: 20px;
     font-size: 1.5rem;
+}
+#tomorrow-deg, #nxt-tomorrow-deg{
+    font-size: 1.1rem;
 }
 #search{
     width: fit-content;
@@ -104,7 +112,24 @@ label{
     color: #ffffff;
 }
 #comment{
-    margin-top: 9%;
+    margin-top: 115px;
     font-size: 0.8rem;
     color: #ffffff;
+}
+dialog{
+    width: 250px;
+    height: 250px;
+    margin: 25vh auto;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+    background: none;
+    border: none;
+    color: #ffffff;
+}
+::backdrop{
+    background-color: rgba(0, 0, 0, 0.6);
+}
+#load{
+    font-size: 1.3rem;
 }
