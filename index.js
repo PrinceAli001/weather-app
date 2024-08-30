@@ -6,12 +6,19 @@ function display() {
     const input = document.querySelector('input');
     const btn = document.querySelector('#btn');
     const place = document.querySelector('#place');
+    const degContainer = document.querySelector('#deg-container');
+    const icon = document.querySelector('#icon');
     const degree = document.querySelector('#degree');
+    const temp = document.querySelector('#temp');
     const description = document.querySelector('#description');
     const tmrDeg = document.querySelector('#tomorrow-deg');
     const nxtTmrDeg = document.querySelector('#nxt-tomorrow-deg');
     const overTmrDeg = document.querySelector('#overmorrow-deg');
     const dialog = document.querySelector('dialog');
+    let oldDeg;
+    let oldString;
+    let string;
+    let newDeg;
 
     async function getWeatherDetails(location) {
         try {
@@ -27,7 +34,8 @@ function display() {
     };
     function changeWeatherDetails(details) {
         place.textContent = `${details.address}`;
-        degree.textContent = `${changeIcon(details)} ${details.currentConditions.temp} °C`
+        icon.textContent = `${changeIcon(details)}`
+        degree.textContent = `${details.currentConditions.temp}`
         description.textContent = `'${details.currentConditions.conditions}'`;
         tmrDeg.textContent = ` ${details.days[1].temp} °C`;
         nxtTmrDeg.textContent = ` ${details.days[2].temp} °C`;
@@ -54,9 +62,24 @@ function display() {
     function stopLoad() {
         dialog.close();
     };
+    function convertTemp() {
+        if (degContainer.textContent.includes('°C')) {
+            newDeg = (degree.textContent * 9/5) + 32;
+            degree.textContent = newDeg;
+            temp.textContent = ' °F'
+        } else {
+            oldDeg = (degree.textContent - 32) * 5/9;
+            oldString = oldDeg.toString();
+            string = oldString.split('.');
+            newDeg = Number(string[0]);
+            degree.textContent = newDeg;
+            temp.textContent = ' °C';
+        }
+    };
 
+    degContainer.addEventListener('click', convertTemp);
     btn.addEventListener('click',() => {
         startLoad();
         getWeatherDetails(input.value);
-    })
+    });
 } 

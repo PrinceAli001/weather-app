@@ -28,7 +28,6 @@ main{
     width: 390px;
     height: 390px;
     background-color: rgba(0, 0, 0, 0.6);
-    /* background-color: #ffffff; */
     margin: 0 auto 60px auto;
     border-radius: 20px;
     padding: 60px 20px 10px 20px;
@@ -46,9 +45,10 @@ main{
     align-self: center;
     font-size: 2rem;
 }
-#degree{
+#deg-container{
     font-size: 1.9rem;
     margin-bottom: 20px;
+    cursor: pointer;
 }
 #description{
     font-size: 1.4rem;
@@ -118,14 +118,18 @@ label{
 }
 dialog{
     width: 250px;
-    height: 250px;
-    margin: 25vh auto;
-    gap: 5px;
-    justify-content: center;
-    align-items: center;
+    height: 200px;
+    margin: auto;
+    padding: 45px 0 45px 0;
     background: none;
     border: none;
     color: #ffffff;
+}
+#inner-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
 }
 ::backdrop{
     background-color: rgba(0, 0, 0, 0.6);
