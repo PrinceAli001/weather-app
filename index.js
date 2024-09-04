@@ -15,15 +15,10 @@ function display() {
     const nxtTmrDeg = document.querySelector('#nxt-tomorrow-deg');
     const overTmrDeg = document.querySelector('#overmorrow-deg');
     const dialog = document.querySelector('dialog');
+    let currentIcon;
     let oldDeg;
-    let oldString;
     let string;
     let newDeg;
-    let fString;
-    let fOldDeg;
-    let fOldString;
-    let fNewDeg;
-    let currentIcon;
 
     function changeBackgroundImg(result) {
         main.setAttribute('style',`background-image: url(${result.data.images.original.url});`);
@@ -85,26 +80,21 @@ function display() {
     };
     function convertTemp() {
         if (degContainer.textContent.includes('°C')) {
-            fOldDeg = (degree.textContent * 9/5) + 32;
-            fOldString = fOldDeg.toString();
-            if (fOldString.length > 5) {
-                fString = fOldString.slice(0,5);
-            } else {
-                fString = fOldString;
-            };
-            fNewDeg = fString;
-            degree.textContent = ` ${fNewDeg}`;
+            oldDeg = (degree.textContent * 9/5) + 32;
+            string = oldDeg.toString();
+            newDeg = string.slice(0,5);
+            degree.textContent = ` ${newDeg}`;
             temp.textContent = ' °F';
         } else {
-            oldDeg = (degree.textContent - 32) * 5/9;
-            oldString = oldDeg.toString();
-            if (oldString.includes('.0000')) {
-                string = oldString.split('.');
-            } else {
-                string = oldString.slice(0,4);
-            };
-            newDeg = string;
-            degree.textContent = ` ${newDeg}`;
+            startLoad();
+            getWeatherDetails(input.value)
+                .then((response) => {
+                    return response.json
+                })
+                .then((response) => {
+                    stopLoad();
+                    degree.textContent = `${response.currentConditions.temp}`;
+                })
             temp.textContent = ' °C';
         }
     };
